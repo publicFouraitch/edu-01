@@ -29,28 +29,12 @@ function prime(n)
 
 
 var d = new Date();
-var ms = d.getMilliseconds();
-var s = d.getSeconds();
-var m = d.getMinutes();
-s = ms/1000;
-s = s % 3600;
-m = s / 60;
-s = s % 60;
+var ms = d.getTime();
 
-console.log(prime(549424));
+console.log(prime(534776));
+
 
 var d1 = new Date();
-var ms1 = d1.getSeconds();
-var s1 = d1.getSeconds();
-var m1 = d1.getMinutes();
-s1 = ms1/1000;
-s1 = s1 % 3600;
-m1 = s1 / 60;
-s1 = s1 % 60;
+var ms1 = d1.getTime();
 
-if(m || m1)
-    console.log(m1 * 60 * 1000 + s1 * 1000 + ms1 - m * 60 * 1000 + s * 1000 + ms);
-else if(s || s1)
-    console.log( s1 * 1000 + ms1 - s * 1000 + ms);
-else if(ms || ms1)
-    console.log(ms1 - ms);
+console.log((ms1 - ms)/1000);
