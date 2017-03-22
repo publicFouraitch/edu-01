@@ -3,7 +3,7 @@ function isPrime(a)
 {
     var prime = true;
     for(var i=2; i<=Math.sqrt(a); ++i)
-        if(a % i == 0)
+        if(a % i)
         {
             prime = false;
             break;
@@ -17,7 +17,7 @@ function isPrime(a)
 function prime(n)
 {
     var a = 2;
-    while(n != 0)
+    while(n)
     {
         if(isPrime(a))
             --n;
@@ -31,7 +31,7 @@ function prime(n)
 var d = new Date();
 var ms = d.getTime();
 
-console.log(prime(534776));
+console.log(prime(13465));
 
 
 var d1 = new Date();
