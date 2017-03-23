@@ -26,14 +26,18 @@ function  doRequest(lang, section, coveragePercent, words, minimumShouldPercent)
             });
         });
         //boolQuery.minimum_should_match = Math.ceil(words.length / 2);
-        boolQuery.minimum_should_match = Math.ceil(words.length * minimumShouldPercent / 100);
-        console.log(boolQuery.minimum_should_match);
-    }
-    if (boolQuery.minimum_should_match==0)
-    {
-        delete boolQuery.minimum_should_match
-    }
+        if (minimumShouldPercent!=0)
+        {
+            boolQuery.minimum_should_match = Math.ceil(words.length * minimumShouldPercent / 100);
+        }
 
+
+    }
+    // if (boolQuery.minimum_should_match==0)
+    // {
+    //     delete boolQuery.minimum_should_match;
+    // }
+    console.log(boolQuery.minimum_should_match);
 /*
     console.log(JSON.stringify({
         index: "indexname",
@@ -61,4 +65,4 @@ function  doRequest(lang, section, coveragePercent, words, minimumShouldPercent)
     // return result.count;
 
 }
-doRequest("german", "B1.1-1", 45, ["hello", "world"], 0);
+doRequest("german", "B1.1-1", 45, ["hello", "world"], Math.floor(Math.random() * 100));
