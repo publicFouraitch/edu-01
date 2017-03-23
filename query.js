@@ -30,6 +30,7 @@ function  doRequest(lang, section, coveragePercent, words, minimumShouldPercent)
         console.log(boolQuery.minimum_should_match);
     }
     if (boolQuery.minimum_should_match==0)
+    {
         delete boolQuery.minimum_should_match
     }
 
@@ -60,4 +61,4 @@ function  doRequest(lang, section, coveragePercent, words, minimumShouldPercent)
     // return result.count;
 
 }
-doRequest("german", "B1.1-1", 45, ["hello", "world"], 10);
+doRequest("german", "B1.1-1", 45, ["hello", "world"], 0);
