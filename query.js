@@ -1,7 +1,4 @@
-
-
-
-
+ var data = require('data.js');
 
 const co = require("co");
 
@@ -68,11 +65,15 @@ function  doRequest(lang, section, coveragePercent, words, minimumShouldPercent)
 }
 
 
-     var a= Math.floor(Math.random() * 100);
+
+
+//return Math.floor(Math.random() * 100);
+
+doRequest("german", "B1.1-1", 45, ["hello", "world"],10);
 
 
 
-doRequest("german", "B1.1-1", 45, ["hello", "world"],a);
+
 
 
 

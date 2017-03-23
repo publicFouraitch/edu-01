@@ -30,3 +30,5 @@ module.exports = {
         "A1.2-6": [1, 2, 3, 4, 5, 6, 7, 8],
     }
 };
+exports.data=data;
+console.log("hello");
