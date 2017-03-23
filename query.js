@@ -1,3 +1,8 @@
+
+
+
+
+
 const co = require("co");
 
 function  doRequest(lang, section, coveragePercent, words, minimumShouldPercent) {
@@ -21,9 +26,14 @@ function  doRequest(lang, section, coveragePercent, words, minimumShouldPercent)
             });
         });
         //boolQuery.minimum_should_match = Math.ceil(words.length / 2);
-        boolQuery.minimum_should_match = Math.ceil(words * minimumShouldPercent / 100);
+        boolQuery.minimum_should_match = Math.ceil(words.length * minimumShouldPercent / 100);
+        console.log(boolQuery.minimum_should_match);
+    }
+    if (boolQuery.minimum_should_match==0)
+        delete boolQuery.minimum_should_match
     }
 
+/*
     console.log(JSON.stringify({
         index: "indexname",
         type: "paragraphs",
@@ -35,23 +45,19 @@ function  doRequest(lang, section, coveragePercent, words, minimumShouldPercent)
             }
         },
     }, null, 2));
-    
-    // const result = yield elasticsearch.search({
+*/
+    // const result = yield elasticsearch.count({
     //     index: "indexname",
     //     type: "paragraphs",
-    //     from: 0,
-    //     size: 20,
     //     body: {
     //         query: {
     //             bool: boolQuery,
     //         },
-    //         sort: [
-    //             {_score: "desc"},
-    //             {coverage: "desc"},
-    //             {maxMatchSectionRate: "desc"},
-    //         ],
     //     },
     // });
+    //
+    //
+    // return result.count;
 
 }
-doRequest("english", "A1.1-1", 80, ["hello"], 10);
+doRequest("german", "B1.1-1", 45, ["hello", "world"], 10);
