@@ -29,6 +29,7 @@ function  doRequest(lang, section, coveragePercent, words, minimumShouldPercent)
         if (minimumShouldPercent!=0)
         {
             boolQuery.minimum_should_match = Math.ceil(words.length * minimumShouldPercent / 100);
+            console.log(boolQuery.minimum_should_match);
         }
 
 
@@ -37,7 +38,7 @@ function  doRequest(lang, section, coveragePercent, words, minimumShouldPercent)
     // {
     //     delete boolQuery.minimum_should_match;
     // }
-    console.log(boolQuery.minimum_should_match);
+
 /*
     console.log(JSON.stringify({
         index: "indexname",
@@ -63,6 +64,18 @@ function  doRequest(lang, section, coveragePercent, words, minimumShouldPercent)
     //
     //
     // return result.count;
-
+    // return result.count;
 }
-doRequest("german", "B1.1-1", 45, ["hello", "world"], Math.floor(Math.random() * 100));
+
+
+     var a= Math.floor(Math.random() * 100);
+
+    //return a;
+
+
+doRequest("german", "B1.1-1", 45, ["hello", "world"],a);
+
+
+
+
+//
