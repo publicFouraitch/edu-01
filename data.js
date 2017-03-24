@@ -31,15 +31,17 @@
     }
 };
 
-    arr1 = [];
-    arr1 = Object.keys(module.exports);
 
 
-   arr2 = [module.exports.english];
-   console.log(arr2)
-    for(var i = 0; i<=arr1.length; ++i)
-        arr2[i] = Object.keys(module.exports.arr1[i]);
+  eng = [];
+  eng = Object.keys(module.exports.english);
 
-    console.log(arr2);
+  ger = [];
+  ger = Object.keys(module.exports.german);
+
+  console.log(module.exports.english);
+
+
+
   //console.log(arr);
   //console.log(module.exports.english[arr[4]]);

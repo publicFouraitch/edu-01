@@ -69,10 +69,12 @@ function  doRequest(lang, section, coveragePercent, words, minimumShouldPercent)
 
 //return Math.floor(Math.random() * 100);
 
-//doRequest("german", "B1.1-1", 85, ["hello", "world"],10);
+ /*
+ for(var i=0; i<=eng.length; ++i)
+     doRequest("german", "B1.1-1", 85, module.exports.english[eng[i]],10);
+*/
 
-
-
+ console.log(module.exports.english);
 
 
 
