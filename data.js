@@ -1,4 +1,4 @@
-module.exports = {
+  module.exports = {
     "english": {
         "A1.1-1": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
         "A1.1-2": [1, 2, 3, 4, 5, 6, 7],
@@ -31,5 +31,15 @@ module.exports = {
     }
 };
 
-    // console.log( module.exports.english['']);
-console.log( module.exports.english["A1.2-6"]);
+    arr1 = [];
+    arr1 = Object.keys(module.exports);
+
+
+   arr2 = [module.exports.english];
+   console.log(arr2)
+    for(var i = 0; i<=arr1.length; ++i)
+        arr2[i] = Object.keys(module.exports.arr1[i]);
+
+    console.log(arr2);
+  //console.log(arr);
+  //console.log(module.exports.english[arr[4]]);

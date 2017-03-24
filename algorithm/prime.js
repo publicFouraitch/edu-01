@@ -29,7 +29,6 @@ function prime(n)
 
 
 var d = new Date();
-var ms = d.getTime();
 
 console.log(prime(13465));
 
