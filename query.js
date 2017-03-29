@@ -1,16 +1,29 @@
- var data = require('./data');
+var data = require('./data');
 
 const co = require("co");
 
-function  doRequest(lang, section, coveragePercent, words, minimumShouldPercent) {
-    
-    const filter = [
-        {term: {lang: lang}},
-        {term: {sectionPercent90: section}},
-        {range: {coverage: {gte: coveragePercent}}}
+function doRequest(lang, section, coveragePercent, words, minimumShouldPercent) {
+
+    const filter = [{
+        term: {
+            lang: lang
+        }
+    },
+        {
+            term: {
+                sectionPercent90: section
+            }
+        },
+        {
+            range: {
+                coverage: {
+                    gte: coveragePercent
+                }
+            }
+        }
     ];
 
-    const boolQuery =  {
+    const boolQuery = {
         filter: filter,
     };
 
@@ -19,14 +32,15 @@ function  doRequest(lang, section, coveragePercent, words, minimumShouldPercent)
         boolQuery.should = [];
         words.forEach(word => {
             boolQuery.should.push({
-                term: {words: word}
+                term: {
+                    words: word
+                }
             });
         });
         //boolQuery.minimum_should_match = Math.ceil(words.length / 2);
-        if (minimumShouldPercent!=0)
-        {
+        if (minimumShouldPercent != 0) {
             boolQuery.minimum_should_match = Math.ceil(words.length * minimumShouldPercent / 100);
-            console.log(boolQuery.minimum_should_match);
+            return boolQuery.minimum_should_match;
         }
 
 
@@ -36,19 +50,19 @@ function  doRequest(lang, section, coveragePercent, words, minimumShouldPercent)
     //     delete boolQuery.minimum_should_match;
     // }
 
-/*
-    console.log(JSON.stringify({
-        index: "indexname",
-        type: "paragraphs",
-        from: 0,
-        size: 20,
-        body: {
-            query: {
-                bool: boolQuery,
-            }
-        },
-    }, null, 2));
-*/
+    /*
+     console.log(JSON.stringify({
+     index: "indexname",
+     type: "paragraphs",
+     from: 0,
+     size: 20,
+     body: {
+     query: {
+     bool: boolQuery,
+     }
+     },
+     }, null, 2));
+     */
     // const result = yield elasticsearch.count({
     //     index: "indexname",
     //     type: "paragraphs",
@@ -67,29 +81,26 @@ function  doRequest(lang, section, coveragePercent, words, minimumShouldPercent)
 
 
 
-var per =  Math.floor(Math.random() * 100);
+    var per = Math.floor(Math.random() * 100);
+
+    if (!per)
+        per++;
+
+
+    eng = Object.keys(data.english);
+
+    ger = [];
+    ger = Object.keys(data.german);
+
+
+    arr1 = []
+    for (var i = 0; i < eng.length; ++i)
+        arr1[i] = doRequest("english", eng[i], 85, data.english[eng[i]], per);
+    console.log(arr1);
 
 
 
-
- eng = Object.keys(data.english);
-
- ger = [];
- ger = Object.keys(data.german);
-
- // for(var i=0; i<eng.length; ++i)
- //    console.log(data.english[eng[i]]);
-
-  for(var i=0; i<eng.length; ++i)
-      doRequest("english", eng[i], 85, data.english[eng[i]],per);
-
-  console.log("----------------");
-  for(var i=0; i<ger.length; ++i)
-      doRequest("german", ger[i], 85, data.german[ger[i]], per);
-
-
-//console.log(data.english[eng[3]]);
-
-
-
-
+    arr2 = [];
+    for (var i = 0; i < ger.length; ++i)
+        arr2[i] = doRequest("german", ger[i], 85, data.german[ger[i]], per);
+    console.log(arr2);
