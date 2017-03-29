@@ -33,13 +33,17 @@ module.exports = {
 
 
 
-  eng = [];
-  eng = Object.keys(module.exports.english);
 
-  ger = [];
-  ger = Object.keys(module.exports.german);
-
-  console.log(module.exports.english);
+  //eng = [];
+  //   eng = Object.keys(module.exports.english);
+  //
+  //   ger = [];
+  //   ger = Object.keys(module.exports.german);
+  //
+  //   console.log(eng);
+  //
+  //   for(var i=0; i<=eng.length; ++i)
+  //       doRequest("english", eng[i], 85, data.english[eng[i]],10);
 
 
 

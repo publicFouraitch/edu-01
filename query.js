@@ -67,15 +67,28 @@ function  doRequest(lang, section, coveragePercent, words, minimumShouldPercent)
 
 
 
-//return Math.floor(Math.random() * 100);
+var per =  Math.floor(Math.random() * 100);
 
- /*
- for(var i=0; i<=eng.length; ++i)
-     doRequest("german", "B1.1-1", 85, module.exports.english[eng[i]],10);
-*/
 
- console.log(module.exports.english);
 
+
+ eng = Object.keys(data.english);
+
+ ger = [];
+ ger = Object.keys(data.german);
+
+ // for(var i=0; i<eng.length; ++i)
+ //    console.log(data.english[eng[i]]);
+
+  for(var i=0; i<eng.length; ++i)
+      doRequest("english", eng[i], 85, data.english[eng[i]],per);
+
+  console.log("----------------");
+  for(var i=0; i<ger.length; ++i)
+      doRequest("german", ger[i], 85, data.german[ger[i]], per);
+
+
+//console.log(data.english[eng[3]]);
 
 
 
