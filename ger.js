@@ -1,25 +1,13 @@
 
-var test = require("./german.csv");
-
-var fs = require("fs");
-var parse = require('csv-parse');
+var convertcsv = require("./convertcsv.json");
 
 
 
-var File="german.csv";
-File = File.replace( /,/g, "" );
+var articleArr = convertcsv.article;
+ //console.log(articleArr);
+for (var i = 0; i<articleArr.length; i++)
+{
+    console.log(articleArr[i]);
 
-var parser = parse({delimiter: ','}, function (err, data) {
-    async.eachSeries(data, function (line, callback) {
 
-        doSomething(line).then(function() {
-
-            callback();
-        });
-    });
-});
-fs.createReadStream(File).pipe(parser);
-
-// var str = "a,d,k";
-// str = str.replace( /,/g, "" );
-// console.log(str)
+}
